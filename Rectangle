@@ -1,0 +1,43 @@
+class Rectangle {
+   PVector pos;
+  PVector velocity;
+  
+  color rectangleColor;
+  
+  int side;
+  
+  Rectangle() {
+    pos = new PVector(random(width),random(height));
+    velocity = new PVector(random(3) - 1,random(3) - 1);
+    rectangleColor = color (#EE82EE);
+  }
+   
+  void drawRectangle() {
+    noStroke();
+    fill(120, 254, 207);
+    rect(pos.x, pos.y, side, side);
+  }
+   
+  void updateRectangle() {
+    pos.x += velocity.x;
+    pos.y += velocity.y;
+     
+    if (pos.x > (width + side)) {
+      pos.x = 0 -side;
+    }
+     
+    if (pos.x < (0 - side)) {
+      pos.x = width + side;
+    }
+     
+    if (pos.y > (height + side)) {
+      pos.y = 0 - side;
+    }
+     
+    if (pos.y < (0 - side)) {
+      pos.y = height + side;
+    }
+  
+    drawRectangle();
+  }
+}
